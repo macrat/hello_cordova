@@ -5,11 +5,15 @@
     "description": "A sample Apache Cordova application that responds to the deviceready event.",
     "main": "index.js",
     "scripts": {
-        "build": "npm run build:js && npm run build:browser",
-        "build:browser": "./node_modules/.bin/cordova build browser",
+        "build": "npm run build:js && npm run build:browser && npm run build:android && npm run build:ios",
         "build:js": "./node_modules/.bin/webpack",
+        "build:browser": "./node_modules/.bin/cordova build browser",
+        "build:android": "./node_modules/.bin/cordova build android",
+        "build:ios": "./node_modules/.bin/cordova build ios",
         "debug": "npm run debug:browser",
         "debug:browser": "npm run build:js && ./node_modules/.bin/cordova emulate browser",
+        "debug:android": "npm run build:js && ./node_modules/.bin/cordova emulate android",
+        "debug:ios": "npm run build:js && ./node_modules/.bin/cordova emulate ios",
         "postinstall": "./node_modules/.bin/cordova platform add browser",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
@@ -17,7 +21,9 @@
     "license": "Apache-2.0",
     "dependencies": {
         "cordova": "^8.0.0",
+        "cordova-android": "7.0.0",
         "cordova-browser": "^5.0.3",
+        "cordova-ios": "4.5.4",
         "cordova-plugin-whitelist": "^1.3.3",
         "vue": "^2.5.13",
         "vue-loader": "^14.1.1",
@@ -29,7 +35,9 @@
             "cordova-plugin-whitelist": {}
         },
         "platforms": [
-            "browser"
+            "browser",
+            "android",
+            "ios"
         ]
     }
 }
